@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page-title -->
+<div class="page-title page-blog-full-w">
+    <div class="rellax" data-rellax-speed="5">
+        <img src="{% static 'images/page-title/blog-full-w.jpg' %}" alt="">
+    </div>
+    <div class="content-wrap">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content">
+                        <p class="sub-title">
+                            Hush kelibsiz
+                        </p>
+                        <h1 class="title">
+                            Fermerlar boshqaruv tizimiga
+                        </h1>
+                        <div class="icon-img">
+                            <img src="{% static 'images/item/line-throw-title.png' %}" alt="">
+                        </div>
+                        <div class="breadcrumb">
+                            <a href="{% url 'home_page' %}">Bosh sahifa</a>
+                            <div class="icon">
+                                <i class="icon-arrow-right1"></i>
+                            </div>
+                            <a href="/dashboard"> Fermerlar boshqaruv tizimiga</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-item item-2">
+        <img src="{% static 'images/item/grass.png' %}" alt="">
+    </div>
+</div><!-- /.Page-title -->
+
+<!-- Main-content -->
+<div class="main-content page-blog-single">
+    <div class="blog-single">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="content">
+                        <h3 class="title-name fw-bold">
+                            Dashboard
+                        </h3>
+
+                        {% if request.user.farm %}
+                            <div class="block-quote style-3 wow fadeInUp" data-wow-delay="0s">
+                            <div class="has-border">
+                                <div class="quote">
+                                    <div class="icon style-circle">
+                                        <i class="icon-quote"></i>
+                                    </div>
+                                    <p class="font-snowfall cite">
+                                        {{ request.user.farm.name }} <br>
+
+                                        <span class="text-sm">{{ request.user.farm.location }}</span>
+                                    </p>
+                                </div>
+                                <div class="bot">
+                                    <div class="entry-author">
+                                        <p>
+                                            <a href="#" class="hover-text-secondary">
+                                                {{ request.user.farm.owner }}
+                                            </a>
+
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                            <div class="post-comment-wrap" id="post-comment-wrap">
+                                <h2 class="fw-bold font-worksans wow fadeInUp" data-wow-delay="0s">
+                                    Ferma ma'lumotlarini yangilash
+                                </h2>
+                                <form method="POST" class="form-post-comment">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <div class="flex justify-center mt-5">
+                                            <button type="submit" class="tf-btn">
+                                                <span class="text-style">
+                                                    Saqlash
+                                                </span>
+                                                <span class="icon">
+                                                    <i class="icon-arrow_right"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </form>
+                            </div>
+                        {% else %}
+                            <div class="block-quote style-3 wow fadeInUp" data-wow-delay="0s">
+                            <div class="has-border">
+                                <div class="quote">
+                                    <div class="icon style-circle">
+                                        <i class="icon-quote"></i>
+                                    </div>
+                                    <p class="font-snowfall cite">
+                                        Fermangizni qo'shing va tizimdan to'liq foydalanish imkoniyatiga ega bo'ling!
+                                    </p>
+                                </div>
+                                <div class="bot">
+                                    <div class="entry-author">
+                                        <p>
+                                            <a href="#post-comment-wrap" class="hover-text-secondary">
+                                                Ferma qo'shish
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                            <div class="post-comment-wrap" id="post-comment-wrap">
+                                <h2 class="fw-bold font-worksans wow fadeInUp" data-wow-delay="0s">
+                                    Ferma qo'shish
+                                </h2>
+                                <form method="POST" class="form-post-comment">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <div class="flex justify-center mt-5">
+                                            <button type="submit" class="tf-btn">
+                                                <span class="text-style">
+                                                    Saqlash
+                                                </span>
+                                                <span class="icon">
+                                                    <i class="icon-arrow_right"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="tf-sidebar">
+                        <div class="sidebar-item sb-category">
+                            <h5 class="sb-title">
+                                Bo'limlar
+                            </h5>
+                            <div class="sb-content">
+                                <ul class="category-list">
+                                    <li class="item">
+                                        <a href="/dashboard"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="/dashboard"><i class="fa fa-tractor"></i> Mening fermam</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="/dashboard/products"><i class="fa fa-cogs"></i> Mening maxsulotlarim</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#"><i class="fa fa-users"></i> Mening xodimlarim</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#"><i class="fa fa-chart-line"></i> Kirim/Chiqim</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#"><span class="text-danger"><i class="fa fa-sign-out-alt"></i> Tizimdan chiqish</span></a>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.Main-content -->
+{% endblock content %}
