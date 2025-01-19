@@ -208,3 +208,5 @@ def farm_products_page(request, pk):
     return render(request, 'home/products.html', ctx)
 
 
+def about_page(request):
+    return render(request, 'home/about.html')
