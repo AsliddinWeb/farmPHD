@@ -31,6 +31,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Mahsulot"
         verbose_name_plural = "Mahsulotlar"
+        ordering = ['-id']
 
     def __str__(self):
         return f"{self.name} - {self.farm.name}"

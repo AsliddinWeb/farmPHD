@@ -13,18 +13,18 @@ class FarmForm(forms.ModelForm):
             'owner': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['farm', 'name', 'quantity', 'price_per_unit', 'harvested_at']
+        fields = ['image', 'name', 'quantity', 'price_per_unit', 'harvested_at']
         widgets = {
-            'farm': forms.Select(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
             'price_per_unit': forms.NumberInput(attrs={'class': 'form-control'}),
             'harvested_at': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
         }
+
 
 
 class EquipmentForm(forms.ModelForm):

@@ -2,7 +2,7 @@ import requests
 
 from django.contrib.auth.decorators import login_required
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
@@ -46,7 +46,7 @@ def dashboard_page(request):
 
 @login_required(login_url='login_page')
 def products_page(request):
-    # Check if the user has a farm associated with them
+
     try:
         farm = request.user.farm
     except Farm.DoesNotExist:
@@ -54,30 +54,56 @@ def products_page(request):
 
     products = Product.objects.all()
 
+    ctx = {'farm': farm, 'products': products}
+
+    return render(request, 'dashboard/products.html', ctx)
+
+
+@login_required(login_url='login_page')
+def add_product_page(request):
     if request.method == 'POST':
-        # If farm exists, update it
-        if farm:
-            form = ProductForm(request.POST, instance=farm)
-        else:
-            form = FarmForm(request.POST)
+        try:
+            farm = request.user.farm
+        except Farm.DoesNotExist:
+            farm = None
 
+        print(farm)
+
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            farm = form.save(commit=False)
-            farm.user = request.user  # Associate the farm with the current user
-            farm.save()
-            messages.success(request, "Maxsulot saqlandi!")
+            product = form.save(commit=False)
+            product.farm = farm
+            product.save()
             return redirect('products_page')
-        else:
-            messages.error(request, "Ma'lumotlarni saqlashda xato yuz berdi.")
-    else:
-        form = FarmForm(instance=farm)
 
-    return render(request, 'dashboard/products.html', {'form': form, 'farm': farm, 'products': products})
+    else:
+        form = ProductForm()
+    return render(request, 'dashboard/add_product.html', {'form': form})
+
+
+def edit_product_page(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('products_page')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'dashboard/add_product.html', {'form': form, 'product': product, 'edit': True})
+
+def delete_product_page(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('products_page')
+    return render(request, 'dashboard/delete_product.html', {'product': product})
+
+
 
 def login_page(request):
-    # Check if the user is already authenticated
     if request.user.is_authenticated:
-        return redirect('dashboard_page')  # Redirect to the dashboard if already logged in
+        return redirect('dashboard_page')
 
     if request.method == 'POST':
         username = request.POST['username']

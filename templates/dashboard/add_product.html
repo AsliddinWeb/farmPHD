@@ -47,74 +47,24 @@
                 <div class="col-lg-8">
                     <div class="content">
                         <h3 class="title-name fw-bold">
-                            Maxsulotlarim
+                            Maxsulot qo'shish
                         </h3>
-
-                        <div class="text-end">
-                            <a href="{% url 'add_product_page' %}" class="btn btn-lg btn-success">Qo'shish</a>
-                        </div>
-
-                        {% if request.user.farm.products %}
-                            <div class="wg-shop-content ">
-                            <div class="grid-layout-3 gap-30-20">
-
-                                {% for product in products %}
-                                  <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
-                                      <ul class="trendy-list">
-                                        <li class="trendy-item ">
-                                            <p class="color-2">
-                                                <a class="text-white" href="{% url 'edit_product_page' pk=product.id %}">O'zgartirish</a>
-                                            </p>
-                                        </li>
-                                        <li class="trendy-item ">
-                                            <p class="color-3">
-                                                <a class="text-white" href="{% url 'delete_product_page' pk=product.id %}">O'chirish</a>
-                                            </p>
-                                        </li>
-
-                                    </ul>
-
-                                    <div class="image">
-                                        <img src="{{ product.image.url }}" data-src="{{ product.image.url }}" alt="{{ product.name }}"
-                                            class="lazyload">
+                        <div class="wg-shop-content ">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="tf-btn gap-30 mt-5">
+                                    <span class="text-style">
+                                        Qo'shish
+                                    </span>
+                                    <div class="icon">
+                                        <i class="icon-arrow_right"></i>
                                     </div>
-                                    <a href="#" class="name-product font-worksans hover-text-4">
-                                        {{ product.name }}
-                                    </a>
-                                    <div class="pricing-star">
-                                        <div class="price-wrap">
+                                </button>
+                            </form>
 
-                                            <span class=" price-2">{{ product.quantity }} tonna</span>
-                                        </div>
-                                        <div class="wg-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
+                        </div>
 
-                            </div>
-                        </div>
-                        <div class=" tf-page-pagination">
-                            <ul>
-                                <li>
-                                    <a class="active" href="javascript:void(0)">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                            </ul>
-                        </div>
-                        {% else %}
-                            Yoq
-                        {% endif %}
                     </div>
                 </div>
 
@@ -133,7 +83,8 @@
                                         <a href="/dashboard"><i class="fa fa-tractor"></i> Mening fermam</a>
                                     </li>
                                     <li class="item">
-                                        <a href="/dashboard/products"><i class="fa fa-cogs"></i> Mening maxsulotlarim</a>
+                                        <a href="/dashboard/products"><i class="fa fa-cogs"></i> Mening
+                                            maxsulotlarim</a>
                                     </li>
                                     <li class="item">
                                         <a href="#"><i class="fa fa-users"></i> Mening xodimlarim</a>

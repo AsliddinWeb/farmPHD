@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="tf-container w-1290">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="content">
+                <h2>Mahsulotni o'chirish</h2>
+                <p>Haqiqatan ham <strong>{{ product.name }}</strong> mahsulotini o'chirmoqchimisiz?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">O'chirish</button>
+                    <a href="{% url 'products_page' %}" class="btn btn-secondary">Bekor qilish</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
