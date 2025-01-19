@@ -180,3 +180,31 @@ def contact_page(request):
         return redirect('contact_page')
 
     return render(request, 'contact.html')
+
+
+# Home
+def all_products_page(request):
+    farms = Farm.objects.all()
+    products = Product.objects.all()
+
+    ctx = {
+        'farms': farms,
+        'products': products,
+    }
+    return render(request, 'home/products.html', ctx)
+
+def farm_products_page(request, pk):
+    farm = get_object_or_404(Farm, pk=pk)
+
+    farms = Farm.objects.all()
+    products = Product.objects.filter(farm=farm)
+
+    ctx = {
+        'farm': farm,
+
+        'farms': farms,
+        'products': products,
+    }
+    return render(request, 'home/products.html', ctx)
+
+

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/nouislider.min.css' %}" />
+{% endblock custom_css %}
+
+{% block content %}
+<!-- Page-title -->
+<div class="page-title page-blog-full-w">
+    <div class="rellax" data-rellax-speed="5">
+        <img src="{% static 'images/page-title/blog-full-w.jpg' %}" alt="">
+    </div>
+    <div class="content-wrap">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content">
+                        <p class="sub-title">
+                            Hush kelibsiz
+                        </p>
+                        <h1 class="title">
+                            Barcha maxsulotlarga
+                        </h1>
+                        <div class="icon-img">
+                            <img src="{% static 'images/item/line-throw-title.png' %}" alt="">
+                        </div>
+                        <div class="breadcrumb">
+                            <a href="{% url 'home_page' %}">Bosh sahifa</a>
+                            <div class="icon">
+                                <i class="icon-arrow-right1"></i>
+                            </div>
+                            <a href="/products"> Barcha maxsulotlar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-item item-2">
+        <img src="{% static 'images/item/grass.png' %}" alt="">
+    </div>
+</div><!-- /.Page-title -->
+
+<!-- Main-content -->
+<div class="main-content page-shop-product pt-0">
+    <div class="tf-container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="tf-sidebar">
+                    <div class="sidebar-item sb-category">
+                        <h5 class="sb-title">
+                            Fermalar
+                        </h5>
+                        <div class="sb-content">
+                            <ul class="category-list">
+                                {% for farm in farms %}
+                                    <li class="item">
+                                        <a href="{% url 'farm_products_page' pk=farm.id %}">{{ farm.name }} ({{ farm.products.all|length }})</a>
+                                    </li>
+                                {% endfor %}
+
+                                <li class="item">
+                                    <a href="/products" class="fw-bold text-success">Barcha mahsulotlar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="wg-shop-content ">
+                    {% if farm %}
+                        <h3 class="mb-5">"{{ farm.name }}" mahsulotlari</h3>
+                    {% else %}
+                        <h3 class="mb-5">Barcha mahsulotlar</h3>
+                    {% endif %}
+
+                    <div class="grid-layout-3 gap-30-20">
+
+                        {% if products %}
+                            {% for product in products %}
+                              <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
+
+
+                                <div class="image">
+                                    <img src="{{ product.image.url }}" data-src="{{ product.image.url }}" alt="{{ product.name }}"
+                                        class="lazyload">
+                                </div>
+                                <a href="#" class="name-product font-worksans hover-text-4">
+                                    {{ product.name }}
+                                </a>
+
+                                <div class="pricing-star">
+                                    <div class="price-wrap">
+
+                                        <span class=" price-2">{{ product.quantity }} tonna</span>
+
+                                    </div>
+
+                                    <div class="wg-rating">
+                                        <p>{{ product.price_per_unit }} so'm</p>
+                                    </div>
+                                </div>
+                                  <div>
+                                        <p class="fw-400">{{ product.harvested_at }} yig'ib olingan!</p>
+                                    </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div>
+                                <h4 class="text-danger">Mahsulotlar hozircha yo'q!</h4>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.Main-content -->
+{% endblock content %}
+
+{% block custom_js %}
+<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
+{% endblock custom_js %}

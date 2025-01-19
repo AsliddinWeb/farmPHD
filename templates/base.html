@@ -43,6 +43,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'icons/icomoon/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'icons/fontawesome/css/all.min.css' %}"/>
 
+    {% block custom_css %}
+    {% endblock custom_css %}
+
     <!-- Favicon and Touch Icons -->
     <link rel="shortcut icon" href="{% static 'images/new/logo.png' %}"/>
     <link rel="apple-touch-icon-precomposed" href="{% static 'images/new/logo.png' %}"/>
@@ -229,7 +232,7 @@
                                     </li>
 
                                     <li class="item has-child">
-                                        <a href="/">Maxsulotlar</a>
+                                        <a href="{% url 'all_products_page' %}">Maxsulotlar</a>
                                     </li>
 
                                     <li class="item has-child">
@@ -303,7 +306,7 @@
                                         </li>
 
                                         <li class="menu-item menu-item-has-children-mobile">
-                                            <a class="item-menu-mobile" href="/">Maxsulotlar</a>
+                                            <a class="item-menu-mobile" href="{% url 'all_products_page' %}">Maxsulotlar</a>
                                         </li>
 
                                         <li class="menu-item menu-item-has-children-mobile">
@@ -400,7 +403,7 @@
                                         </li>
 
                                         <li class="item has-child">
-                                            <a href="/">Maxsulotlar</a>
+                                            <a href="{% url 'all_products_page' %}">Maxsulotlar</a>
                                         </li>
 
                                         <li class="item has-child">
@@ -713,6 +716,9 @@
 <script type="text/javascript" src="{% static 'js/Splitetext.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <!-- /Javascript -->
+
+{% block custom_js %}
+{% endblock custom_js %}
 
 </body>
 </html>
