@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'farm_app',
     'settings_app',
     'pages_app',
+    'news_app',
 ]
 
 MIDDLEWARE = [

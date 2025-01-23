@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+
+{% endblock custom_css %}
+
+{% block content %}
+<!-- Page-title -->
+<div class="page-title page-our-service  ">
+    <div class="rellax" data-rellax-speed="5">
+        <img src="{% static 'images/page-title/our-service.jpg' %}" alt="">
+    </div>
+    <div class="content-wrap">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content">
+                        <p class="sub-title">
+                            Hozirda eng yaxshi
+                        </p>
+                        <h1 class="title">
+                            Fermalar
+                        </h1>
+                        <div class="icon-img">
+                            <img src="{% static 'images/item/line-throw-title.png' %}" alt="">
+                        </div>
+                        <div class="breadcrumb">
+                            <a href="/">Bosh sahifa</a>
+                            <div class="icon">
+                                <i class="icon-arrow-right1"></i>
+                            </div>
+                            <a> Fermalar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-item item-2">
+        <img src="{% static 'images/item/grass.png' %}" alt="">
+    </div>
+</div><!-- /.Page-title -->
+
+<!-- Main-content -->
+<div class="main-content page-our-service page-our-commitments">
+
+    <!-- Section pricing -->
+    <section class="s-pricing has-img-item tf-pt-0">
+        <div class="tf-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-section text-center has-text mb-81">
+                        <p class="sub-title">Hozirda eng yaxshi
+                        </p>
+                        <p class="title text-anime-style-2">Fermalar</p>
+                        <p class="text">
+                            Bu yerda fermalar katalogi bilan tanishib chiqishingiz mumkin.
+                        </p>
+                        <div class="img-item">
+                            <img class="tf-animate-1" src="{% static 'images/item/rice-plant-2.png' %}" alt=""/>
+                        </div>
+                    </div>
+                </div>
+
+                {% for farm in farms %}
+                    <div class="col-lg-4" style="margin-bottom: 240px;">
+                    <div class="wg-pricing wow fadeInUp" data-wow-delay="0s">
+                        <div class="type-plan">
+                            <i class="icon-barley"></i>
+                            <span class="font-worksans fw-6 fs-20">{{ farm.name }}</span>
+                        </div>
+                        <p class="price font-farmhouse">
+                            <span class="dollar">^</span>
+                            <span>{{ farm.area_size }}</span>
+                            <span class="per">/gektar</span>
+
+                        </p>
+                        <div class="text">
+                            <p class="font-nunito">
+                                {{ farm.location }}
+                            </p>
+                        </div>
+                        <ul class="benifit-list">
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <p><b>Egasi:</b> {{ farm.owner }}!</p>
+                            </li>
+                        </ul>
+                        <a href="{% url 'farm_products_page' pk=farm.id %}" class="tf-btn bg-white ">
+                                    <span class="text-style cl-primary">
+                                        Ferma maxsulotlarini ko'rish
+                                    </span>
+                            <div class="icon">
+                                <i class="icon-arrow_right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="s-img-item item-1">
+            <img src="{% static 'images/item/page-title-top.png' %}" alt="">
+        </div>
+        <div class="s-img-item item-2">
+            <img src="{% static 'images/item/page-title-top.png' %}" alt="">
+        </div>
+    </section><!-- /.Section pricing -->
+
+</div><!-- /.Main-content -->
+{% endblock content %}
+
+
+{% block custom_js %}
+{% endblock custom_js %}

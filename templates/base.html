@@ -228,7 +228,7 @@
                                     </li>
 
                                     <li class="item has-child">
-                                        <a href="/">Fermerlar</a>
+                                        <a href="{% url 'farms_page' %}">Fermerlar</a>
                                     </li>
 
                                     <li class="item has-child">
@@ -236,7 +236,7 @@
                                     </li>
 
                                     <li class="item has-child">
-                                        <a href="/">Yangiliklar</a>
+                                        <a href="{% url 'all_news_page' %}">Yangiliklar</a>
                                     </li>
 
                                     <li class="item has-child">
@@ -302,7 +302,7 @@
                                         </li>
 
                                         <li class="menu-item menu-item-has-children-mobile">
-                                            <a class="item-menu-mobile" href="/">Fermerlar</a>
+                                            <a class="item-menu-mobile" href="{% url 'farms_page' %}">Fermerlar</a>
                                         </li>
 
                                         <li class="menu-item menu-item-has-children-mobile">
@@ -310,7 +310,7 @@
                                         </li>
 
                                         <li class="menu-item menu-item-has-children-mobile">
-                                            <a class="item-menu-mobile" href="/">Yangiliklar</a>
+                                            <a class="item-menu-mobile" href="{% url 'all_news_page' %}">Yangiliklar</a>
                                         </li>
 
                                         <li class="menu-item menu-item-has-children-mobile">
@@ -399,7 +399,7 @@
                                         </li>
 
                                         <li class="item has-child">
-                                            <a href="/">Fermerlar</a>
+                                            <a href="{% url 'farms_page' %}">Fermerlar</a>
                                         </li>
 
                                         <li class="item has-child">
@@ -407,7 +407,7 @@
                                         </li>
 
                                         <li class="item has-child">
-                                            <a href="/">Yangiliklar</a>
+                                            <a href="{% url 'all_news_page' %}">Yangiliklar</a>
                                         </li>
 
                                         <li class="item has-child">
@@ -559,7 +559,7 @@
                                         <img src="{% static 'images/section/f-new-post-1.jpg' %}" alt=""/>
                                     </div>
                                     <div class="content">
-                                        <a href="#" class="title-post hover-text-secondary">
+                                        <a href="{% url 'farms_page' %}" class="title-post hover-text-secondary">
                                             Yangi fermerlar uchun 10 eng yaxshi maslahat
                                         </a>
                                         <p class="date-release">
@@ -572,7 +572,7 @@
                                         <img src="{% static 'images/section/f-new-post--2.jpg' %}" alt=""/>
                                     </div>
                                     <div class="content">
-                                        <a href="#" class="title-post hover-text-secondary">
+                                        <a href="{% url 'farms_page' %}" class="title-post hover-text-secondary">
                                             Fermerlarning kayfiyati yomonlashmoqda
                                         </a>
                                         <p class="date-release">

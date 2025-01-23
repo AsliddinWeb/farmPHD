@@ -210,3 +210,11 @@ def farm_products_page(request, pk):
 
 def about_page(request):
     return render(request, 'home/about.html')
+
+def farms_page(request):
+    farms = Farm.objects.all()
+
+    ctx = {
+        'farms': farms,
+    }
+    return render(request, 'home/farms.html', ctx)

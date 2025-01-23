@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+
+{% endblock custom_css %}
+
+{% block content %}
+<!-- Page-title -->
+<div class="page-title page-blog-full-w  ">
+    <div class="rellax" data-rellax-speed="5">
+        <img src="{% static 'images/page-title/blog-full-w.jpg' %}" alt="">
+    </div>
+    <div class="content-wrap">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content">
+                        <p class="sub-title">
+                            Agro innovatsiyalarga oid eng so'nggi
+                        </p>
+                        <h1 class="title">
+                            Yangiliklar
+                        </h1>
+                        <div class="icon-img">
+                            <img src="{% static 'images/item/line-throw-title.png' %}" alt="">
+                        </div>
+                        <div class="breadcrumb">
+                            <a href="/">Bosh sahifa</a>
+                            <div class="icon">
+                                <i class="icon-arrow-right1"></i>
+                            </div>
+                            <a>Yangiliklar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-item item-2">
+        <img src="{% static 'images/item/grass.png' %}" alt="">
+    </div>
+</div><!-- /.Page-title -->
+
+<!-- Main-content -->
+<div class="main-content">
+
+    <!-- Section sub -->
+    <section class="s-sub">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="subscribe-wrap">
+                        <div class="has-border">
+                            <div class="notice">
+                                <div class="icon">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                </div>
+                                <div class="content-inner">
+
+                                    <h3 class="title font-worksans">
+                                        Yangiliklarga obuna bo'ling
+                                    </h3>
+                                    <p class="text">
+                                        Bu orqali saytimizga yangiliklarni eng birinchilardan bo'lib o'qish imkoniyatiga ega bo'lasiz.
+                                    </p>
+                                </div>
+                            </div>
+                            <form class="form-email">
+                                <input type="email" class="style-1" placeholder="Email..." required>
+                                <button type="submit" class="btn-send">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.Section sub -->
+
+    <!-- Section blog full wrap -->
+    <section class="s-blog-full-wrap">
+        <div class="tf-container w-1290">
+            <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="wrap-blog-list mb-50">
+                            {% for new in all_news %}
+                                <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
+                                <div class="image">
+                                    <div class="video-wrap">
+                                        <img class="lazyload" data-src="{{ new.image.url }}"
+                                             src="{{ new.image.url }}" alt="">
+
+                                    </div>
+                                    <div class="entry-date">
+                                        <p class="month-year">
+                                            {{ new.created_at|date }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul class="entry-meta">
+                                        <li class="entry tags">
+                                            <i class="fa-solid fa-tag"></i>
+                                            <p>
+                                                <a href="#">{{ new.category }}</a>
+                                            </p>
+                                        </li>
+                                        <li class="entry view">
+                                            <i class="fa-solid fa-eye"></i>
+                                            <p>
+                                                <a>{{ new.created_at }}</a>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <h3 class="title fw-7">
+                                        <a href="{% url 'news_detail_page' pk=new.id %}">
+                                            {{ new.title }}
+                                        </a>
+                                    </h3>
+                                    <p class="text">
+                                        {{ new.body|truncatewords:10 }}
+                                    </p>
+                                    <div class="bot">
+                                        <a class="tf-btn gap-35" href="{% url 'news_detail_page' pk=new.id %}">
+                                                    <span class="text-style">
+                                                        Batafsil o'qish
+                                                    </span>
+                                            <div class="icon">
+                                                <i class="icon-arrow_right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </section><!-- /.Section blog full wrap -->
+
+</div><!-- /.Main-content -->
+{% endblock content %}

@@ -27,7 +27,11 @@ admin.site.site_header = "Farm Admin"
 admin.site.index_title = "Dashboard"
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
+
+    # News
+    path('news/', include('news_app.urls')),
 
     # Pages
     path('', include('pages_app.urls')),
