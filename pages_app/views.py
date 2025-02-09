@@ -11,9 +11,15 @@ from farm_app.forms import FarmForm, ProductForm
 from farm_app.models import Farm, Product
 
 from settings_app.models import Message
+from news_app.models import News
 
 def home_page(request):
-    return render(request, 'home.html')
+    news = News.objects.all()[:6]
+
+    ctx = {
+        'news': news
+    }
+    return render(request, 'home.html', ctx)
 
 
 @login_required(login_url='login_page')

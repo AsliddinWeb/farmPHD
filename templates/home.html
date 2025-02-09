@@ -255,6 +255,109 @@
     </section>
     <!-- /.Section box portfolio -->
 
+    <!-- Section blog post -->
+    <section class="s-blog-post">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-section has-text text-center mb-81">
+                        <p class="sub-title">Blogdan</p>
+                        <p class="title tf-animate-2">So'nggi Yangiliklar va Maqolalar</p>
+                        <p class="text">
+                            Arpa, bug'doy va boshqa ekinlarni parvarishlash bo'yicha maqolalar va yangiliklar.
+                        </p>
+                        <div class="img-item">
+                            <img class="tf-animate-1" src="{% static 'images/item/rice-plant-2.png' %}" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="s-slide">
+            <div class="tf-container w-1290">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="swiper-container slider-blog-post">
+                            <div class="swiper-wrapper">
+                                {% for i in news %}
+                                    <div class="swiper-slide">
+                                    <article class="article-blog-item type-3 style-2 img-hover">
+                                        <div class="image">
+                                            <div class="video-wrap hover-item">
+                                                <img class="lazyload"
+                                                     data-src="{{ i.image.url }}"
+                                                     src="{{ i.image.url }}" alt=""/>
+                                                <a href="{% url 'news_detail_page' pk=i.id %}"
+                                                   class="style-icon-play popup-youtube">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </a>
+                                            </div>
+                                            <div class="entry-date">
+                                                <p class="month-year">
+                                                    {{ i.created_at|date }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <ul class="entry-meta">
+                                                <li class="entry author">
+                                                    <i class="fa-solid fa-circle-user"></i>
+                                                    <p>
+                                                        <a href="#">
+                                                            Muallif: Umida Nazarova
+                                                        </a>
+                                                    </p>
+                                                </li>
+                                                <li class="entry tags">
+                                                    <i class="fa-solid fa-tag"></i>
+                                                    <p>
+                                                        <a href="{% url 'news_detail_page' pk=i.id %}">{{ i.category }}</a>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                            <h3 class="title fw-6">
+                                                <a href="{% url 'news_detail_page' pk=i.id %}">
+                                                    {{ i.title }}
+                                                </a>
+                                            </h3>
+                                            <p class="text text-line-clamp-3">
+                                                {{ i.body|truncatewords:5 }}
+                                            </p>
+                                            <div class="bot">
+                                                <a href="{% url 'news_detail_page' pk=i.id %}"
+                                                   class="tf-btn-read hover-text-4">Davomini o'qish</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-s-blog-post btn-next">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px" height="20px"
+                     viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
+                    <g fill="#0d401c">
+                        <path
+                                d="M63 19 c0 -0.5 2.6 -2.4 5.8 -4.2 l5.7 -3.3 -19.5 -0.8 c-11 -0.5 -27.1 -0.5 -37 0.1 -9.6 0.5 -17.7 0.7 -17.9 0.5 -2.4 -1.9 22 -3.5 48.7 -3.1 l25.2 0.3 -4.6 -3.9 c-2.5 -2.1 -4.3 -4 -4 -4.3 0.7 -0.7 14.6 8.9 14.6 10.2 0 1.1 -14.3 9.5 -16.2 9.5 -0.4 0 -0.8 -0.4 -0.8 -1z"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="btn-s-blog-post btn-prev">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px" height="20px"
+                     viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
+                    <g fill="#0d401c">
+                        <path
+                                d="M7 15.4 c-3.6 -2.4 -6.6 -5 -6.8 -5.7 -0.2 -1.2 13.8 -9.7 16 -9.7 2.4 0 0.2 2.4 -4.9 5.2 l-5.8 3.3 19.5 0.8 c11 0.5 27.1 0.5 37 -0.1 9.6 -0.5 17.7 -0.7 17.9 -0.5 2.4 1.9 -22 3.5 -48.6 3.1 l-25.2 -0.3 4.7 4.2 c6.1 5.5 4.4 5.3 -3.8 -0.3z"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section><!-- /.Section blog post -->
+
+
 
     <!-- Section about -->
     <section class="s-about-us">
@@ -381,6 +484,8 @@
         </div>
     </section>
     <!-- /.Section about -->
+
+
 
 
     <!-- Section service -->
@@ -790,98 +895,6 @@ YARATILGAN DASTURLAR VA MAʼLUMOTLAR BAZALARINING HUQUQIY HIMOYASI TO‘G‘RISI
         </div>
     </section><!-- /.Section project -->
 
-
-    <!-- Section testimonial -->
-    <section class="s-testimonial">
-        <div class="tf-container full">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="content-wrap">
-                        <div class="image wow fadeInLeft " data-wow-delay="0s">
-                            <img class="absolute scroll-element-3" src="{% static 'images/item/s-testi.png' %}"
-                                 alt=""/>
-                        </div>
-
-                        <div class="content-section">
-                            <div class="heading-section">
-                                <p class="sub-title">Mijozlarimiz fikrlari</p>
-                                <p class="title tf-animate-2">Biz haqimizda nima deyishadi?</p>
-                                <div class="img-item">
-                                    <img class="tf-animate-1" src="{% static 'images/item/rice-plant-2.png' %}"
-                                         alt=""/>
-                                </div>
-                                <div class="img-item item-2">
-                                    <i class="icon-quote"></i>
-                                </div>
-                            </div>
-                            <div class="swiper-container slider-s-testimonial">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="testimonial style-4">
-                                            <div class="comment">
-                                                <p class="caption fs-23 font-snowfall">
-                                                    Uch mavsum davomida fermerlik bo‘yicha stajyorlarni qabul
-                                                    qilganmiz. Bu tajriba boshlovchi fermerlar va ularni qabul
-                                                    qiluvchi xo‘jaliklar uchun qanchalik muhim ekanligini ko‘rdik.
-                                                    Yosh fermerlarning yangi energiyasi va ishtiyoqi kelajak uchun
-                                                    umid baxsh etadi.
-                                                </p>
-                                            </div>
-                                            <div class="author-wrap">
-                                                <div class="left">
-                                                    <div class="image-avt">
-                                                        <img src="{% static 'images/widget/author-comment.jpg' %}"
-                                                             alt=""/>
-                                                    </div>
-                                                    <div class="infor">
-                                                        <div class="name-wrap">
-                                                            <a href="#" class="name text-upper hover-text-4">
-                                                                KRISTINA ROZ
-                                                            </a>
-                                                            <div class="wg-rating">
-                                                                <i class="fa-solid fa-star"></i>
-                                                                <i class="fa-solid fa-star"></i>
-                                                                <i class="fa-solid fa-star"></i>
-                                                                <i class="fa-solid fa-star"></i>
-                                                                <i class="fa-solid fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                        <p class="duty">
-                                                            Direktori, Radical Orange Pty Ltd.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="btn-s-testimonial btn-next relative">
-                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px"
-                                         height="20px" viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
-                                        <g fill="#0d401c">
-                                            <path
-                                                    d="M63 19 c0 -0.5 2.6 -2.4 5.8 -4.2 l5.7 -3.3 -19.5 -0.8 c-11 -0.5 -27.1 -0.5 -37 0.1 -9.6 0.5 -17.7 0.7 -17.9 0.5 -2.4 -1.9 22 -3.5 48.7 -3.1 l25.2 0.3 -4.6 -3.9 c-2.5 -2.1 -4.3 -4 -4 -4.3 0.7 -0.7 14.6 8.9 14.6 10.2 0 1.1 -14.3 9.5 -16.2 9.5 -0.4 0 -0.8 -0.4 -0.8 -1z"/>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div class="btn-s-testimonial btn-prev relative">
-                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px"
-                                         height="20px" viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
-                                        <g fill="#0d401c">
-                                            <path
-                                                    d="M7 15.4 c-3.6 -2.4 -6.6 -5 -6.8 -5.7 -0.2 -1.2 13.8 -9.7 16 -9.7 2.4 0 0.2 2.4 -4.9 5.2 l-5.8 3.3 19.5 0.8 c11 0.5 27.1 0.5 37 -0.1 9.6 -0.5 17.7 -0.7 17.9 -0.5 2.4 1.9 -22 3.5 -48.6 3.1 l-25.2 -0.3 4.7 4.2 c6.1 5.5 4.4 5.3 -3.8 -0.3z"/>
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /.Section testimonial -->
-
-
     <!-- Section counter -->
     <section class="s-counter has-img-item">
         <div class="tf-container w-1290">
@@ -961,682 +974,6 @@ YARATILGAN DASTURLAR VA MAʼLUMOTLAR BAZALARINING HUQUQIY HIMOYASI TO‘G‘RISI
             </h1>
         </div>
     </section><!-- /.Section break page -->
-
-
-    <!-- Section faq -->
-    <section class="s-faq has-img-item tf-pt-0">
-        <div class="tf-container w-1290">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="content-section">
-                        <div class="heading-section style-2 has-text mb-43">
-                            <div class="img-item">
-                                <div class="item mr-16">
-                                    <img class="tf-animate-1" src="{% static 'images/item/rice-plant-2.png' %}"
-                                         alt="Savol belgisi"/>
-                                </div>
-                                <p class="sub-title">
-                                    Tez-tez beriladigan savollar
-                                </p>
-                            </div>
-
-                            <p class="title wow fadeInUp" data-wow-delay="0s">
-                                Fermaga oid eng ko‘p beriladigan savollar
-                            </p>
-                            <p class="text">
-                                Qishloq xo‘jaligi sohasida tez-tez duch kelinadigan savollarga javob toping.
-                            </p>
-                        </div>
-                        <div class="tf-accordion accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                        Kuzatuvchi guvohnomasini qanday taqdim qilaman?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        2 yoshgacha bolalar uchun chipta talab qilinmaydi. Ammo chipta buyurtma
-                                        qilinganda yoshni tasdiqlovchi hujjatni olib kelishingiz kerak.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                            aria-expanded="false" aria-controls="collapseTwo">
-                                        Tomoshalar uchun qo‘shimcha to‘lov kerakmi?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        2 yoshgacha bolalar uchun chipta talab qilinmaydi. Ammo chipta buyurtma
-                                        qilinganda yoshni tasdiqlovchi hujjatni olib kelishingiz kerak.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                            aria-expanded="false" aria-controls="collapseThree">
-                                        Jamoam yoki do‘stlarim bilan fermaga kelishim mumkinmi?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        2 yoshgacha bolalar uchun chipta talab qilinmaydi. Ammo chipta buyurtma
-                                        qilinganda yoshni tasdiqlovchi hujjatni olib kelishingiz kerak.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                            aria-expanded="false" aria-controls="collapseFour">
-                                        Fermaga doimiy a’zo bo‘la olamanmi?
-                                    </button>
-                                </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        2 yoshgacha bolalar uchun chipta talab qilinmaydi. Ammo chipta buyurtma
-                                        qilinganda yoshni tasdiqlovchi hujjatni olib kelishingiz kerak.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="s-right img-hover">
-                        <div class="image-wrap hover-item">
-                            <div class="image">
-                                <img src="{% static 'images/section/s-faq.jpg' %}"
-                                     data-src="{% static 'images/section/s-faq.jpg' %}" alt="FAQ bo'limi"
-                                     class="lazyload tf-animate-2"/>
-                            </div>
-                        </div>
-                        <div class="img-item tf-animate__box-2">
-                            <img class="up-down-move" src="{% static 'images/item/question.png' %}"
-                                 alt="Savol belgisi"/>
-                        </div>
-                        <div class="content">
-                            <p class="text fs-30 font-snowfall">
-                                Savolingizni topa olmadingizmi? Ko‘proq savollarni ko‘ring va bugun bizga murojaat
-                                qiling!
-                            </p>
-                            <a href="#" class="tf-btn bg-white">
-                            <span class="text-style cl-primary">
-                                Batafsil o‘qish
-                            </span>
-                                <div class="icon">
-                                    <i class="icon-arrow_right"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="s-img-item item-1 t--40 z-3">
-            <img src="{% static 'images/item/page-title-top.png' %}" alt="Tez-tez beriladigan savollar"/>
-        </div>
-    </section><!-- /.Section faq -->
-
-
-    <!-- Section banner -->
-    <section class="s-banner">
-        <div class="heading-side has-img-item">
-            <div class="image scroll-element-3">
-                <div class="wow zoomIn">
-                    <img class="scale-1-1" src="{% static 'images/item/gree-field.jpg' %}" alt="Ko'katzor maydon"/>
-                </div>
-            </div>
-            <div class="s-img-item item-bottom">
-                <img src="{% static 'images/item/page-title-top.png' %}" alt=""/>
-            </div>
-        </div>
-        <div class="slider-side">
-            <div class="tf-container w-1620">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="swiper-container slider-box-event">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="box-event">
-                                        <div class="image hover-item">
-                                            <img src="{% static 'images/widget/box-event-1.jpg' %}"
-                                                 data-src="{% static 'images/widget/box-event-1.jpg' %}" alt=""
-                                                 class="lazyload"/>
-                                        </div>
-                                        <div class="content">
-                                            <div class="img-item">
-                                                <img src="{% static 'images/item/rice-plant-2.png' %}" alt=""/>
-                                            </div>
-                                            <a href="#" class="title fw-7 font-worksans">
-                                                Ferma Sayohatini Kashing
-                                            </a>
-                                            <p class="text">
-                                                Qishloq hayotini yaqindan o'rganing, xotiralar bilan boyish uchun
-                                                bizning fermamizga tashrif buyuring.
-                                            </p>
-                                            <a href="#" class="tf-btn-read hover-text-4">Batafsil</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box-event">
-                                        <div class="image hover-item">
-                                            <img src="{% static 'images/widget/box-event-2.jpg' %}"
-                                                 data-src="{% static 'images/widget/box-event-2.jpg' %}" alt=""
-                                                 class="lazyload"/>
-                                        </div>
-                                        <div class="content">
-                                            <div class="img-item">
-                                                <img src="{% static 'images/item/rice-plant-2.png' %}" alt=""/>
-                                            </div>
-                                            <a href="#" class="title fw-7 font-worksans">
-                                                Yozgi Ferma Hayoti
-                                            </a>
-                                            <p class="text">
-                                                Yozning iliq kunlarida fermer hayoti bilan tanishing va tabiatdan
-                                                bahramand bo'ling.
-                                            </p>
-                                            <a href="#" class="tf-btn-read hover-text-4">Batafsil</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box-event">
-                                        <div class="image hover-item">
-                                            <img src="{% static 'images/widget/box-event-3.jpg' %}"
-                                                 data-src="{% static 'images/widget/box-event-3.jpg' %}" alt=""
-                                                 class="lazyload"/>
-                                        </div>
-                                        <div class="content">
-                                            <div class="img-item">
-                                                <img src="{% static 'images/item/rice-plant-2.png' %}" alt=""/>
-                                            </div>
-                                            <a href="#" class="title fw-7 font-worksans">
-                                                Bolalar uchun Yozgi Lager
-                                            </a>
-                                            <p class="text">
-                                                Farzandlaringizga tabiat va qishloq hayotini o'rganish imkoniyatini
-                                                yarating.
-                                            </p>
-                                            <a href="#" class="tf-btn-read hover-text-4">Batafsil</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /.Section banner -->
-
-
-    <!-- Section blog post -->
-    <section class="s-blog-post">
-        <div class="tf-container w-1290">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="heading-section has-text text-center mb-81">
-                        <p class="sub-title">Blogdan</p>
-                        <p class="title tf-animate-2">So'nggi Yangiliklar va Maqolalar</p>
-                        <p class="text">
-                            Arpa, bug'doy va boshqa ekinlarni parvarishlash bo'yicha maqolalar va yangiliklar.
-                        </p>
-                        <div class="img-item">
-                            <img class="tf-animate-1" src="{% static 'images/item/rice-plant-2.png' %}" alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="s-slide">
-            <div class="tf-container w-1290">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="swiper-container slider-blog-post">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <article class="article-blog-item type-3 style-2 img-hover">
-                                        <div class="image">
-                                            <div class="video-wrap hover-item">
-                                                <img class="lazyload"
-                                                     data-src="{% static 'images/blog/blog-1.jpg' %}"
-                                                     src="{% static 'images/blog/blog-1.jpg' %}" alt=""/>
-                                                <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                                   class="style-icon-play popup-youtube">
-                                                    <i class="fa-solid fa-play"></i>
-                                                </a>
-                                            </div>
-                                            <div class="entry-date">
-                                                <p class="day">
-                                                    08
-                                                </p>
-                                                <p class="month-year">
-                                                    Iyun 24
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <ul class="entry-meta">
-                                                <li class="entry author">
-                                                    <i class="fa-solid fa-circle-user"></i>
-                                                    <p>
-                                                        <a href="#">
-                                                            Muallif: Hardson
-                                                        </a>
-                                                    </p>
-                                                </li>
-                                                <li class="entry tags">
-                                                    <i class="fa-solid fa-tag"></i>
-                                                    <p>
-                                                        <a href="#">Qishloq xo'jaligi</a>,
-                                                        <a href="#">Fermer</a>
-                                                    </p>
-                                                </li>
-                                                <li class="entry comment">
-                                                    <i class="fa-solid fa-comment"></i>
-                                                    <p>
-                                                        <a href="#">0 Izohlar</a>
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                            <h3 class="title fw-6">
-                                                <a href="#">
-                                                    Sifatli Go'sht olish uchun
-                                                    sigirlarni qanday parvarishlash kerak
-                                                </a>
-                                            </h3>
-                                            <p class="text text-line-clamp-3">
-                                                Arpa ekinini parvarish qilishda diqqat qilish kerak bo'lgan
-                                                jihatlar.
-                                            </p>
-                                            <div class="bot">
-                                                <a href="#"
-                                                   class="tf-btn-read hover-text-4">Davomini o'qish</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="article-blog-item type-3 style-2 img-hover">
-                                        <div class="image">
-                                            <div class="video-wrap hover-item">
-                                                <img class="lazyload"
-                                                     data-src="{% static 'images/blog/blog-2.jpg' %}"
-                                                     src="{% static 'images/blog/blog-2.jpg' %}" alt=""/>
-                                                <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                                   class="style-icon-play popup-youtube">
-                                                    <i class="fa-solid fa-play"></i>
-                                                </a>
-                                            </div>
-                                            <div class="entry-date">
-                                                <p class="day">
-                                                    08
-                                                </p>
-                                                <p class="month-year">
-                                                    Iyun 24
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <ul class="entry-meta">
-                                                <li class="entry author">
-                                                    <i class="fa-solid fa-circle-user"></i>
-                                                    <p>
-                                                        <a href="#">
-                                                            Muallif: Hardson
-                                                        </a>
-                                                    </p>
-                                                </li>
-                                                <li class="entry tags">
-                                                    <i class="fa-solid fa-tag"></i>
-                                                    <p>
-                                                        <a href="#">Qishloq xo'jaligi</a>,
-                                                        <a href="#">Fermer</a>
-                                                    </p>
-                                                </li>
-                                                <li class="entry comment">
-                                                    <i class="fa-solid fa-comment"></i>
-                                                    <p>
-                                                        <a href="#">0 Izohlar</a>
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                            <h3 class="title fw-6">
-                                                <a href="#">
-                                                    Maysalarni Sog'ib olishning eng yaxshi vaqti
-                                                </a>
-                                            </h3>
-                                            <p class="text text-line-clamp-3">
-                                                Arpa va boshqa ekinlarni yig'ish haqida maslahatlar.
-                                            </p>
-                                            <div class="bot">
-                                                <a href="#"
-                                                   class="tf-btn-read hover-text-4">Davomini o'qish</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="swiper-slide">
-                                    <article class="article-blog-item type-3 style-2 img-hover">
-                                        <div class="image">
-                                            <div class="video-wrap hover-item">
-                                                <img class="lazyload"
-                                                     data-src="{% static 'images/blog/blog-3.jpg' %}"
-                                                     src="{% static 'images/blog/blog-3.jpg' %}" alt=""/>
-                                                <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                                   class="style-icon-play popup-youtube">
-                                                    <i class="fa-solid fa-play"></i>
-                                                </a>
-                                            </div>
-                                            <div class="entry-date">
-                                                <p class="day">
-                                                    08
-                                                </p>
-                                                <p class="month-year">
-                                                    Iyun 24
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <ul class="entry-meta">
-                                                <li class="entry author">
-                                                    <i class="fa-solid fa-circle-user"></i>
-                                                    <p>
-                                                        <a href="#">
-                                                            Muallif: Hardson
-                                                        </a>
-                                                    </p>
-                                                </li>
-                                                <li class="entry tags">
-                                                    <i class="fa-solid fa-tag"></i>
-                                                    <p>
-                                                        <a href="#">Qishloq xo'jaligi</a>,
-                                                        <a href="#">Fermer</a>
-                                                    </p>
-                                                </li>
-                                                <li class="entry comment">
-                                                    <i class="fa-solid fa-comment"></i>
-                                                    <p>
-                                                        <a href="#">0 Izohlar</a>
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                            <h3 class="title fw-6">
-                                                <a href="#">
-                                                    Qo'y fermasida ishlashning zavqi
-                                                </a>
-                                            </h3>
-                                            <p class="text text-line-clamp-3">
-                                                Qo'ylarni boqish va ulardan qanday foyda olish haqida.
-                                            </p>
-                                            <div class="bot">
-                                                <a href="#"
-                                                   class="tf-btn-read hover-text-4">Davomini o'qish</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-s-blog-post btn-next">
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px" height="20px"
-                     viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
-                    <g fill="#0d401c">
-                        <path
-                                d="M63 19 c0 -0.5 2.6 -2.4 5.8 -4.2 l5.7 -3.3 -19.5 -0.8 c-11 -0.5 -27.1 -0.5 -37 0.1 -9.6 0.5 -17.7 0.7 -17.9 0.5 -2.4 -1.9 22 -3.5 48.7 -3.1 l25.2 0.3 -4.6 -3.9 c-2.5 -2.1 -4.3 -4 -4 -4.3 0.7 -0.7 14.6 8.9 14.6 10.2 0 1.1 -14.3 9.5 -16.2 9.5 -0.4 0 -0.8 -0.4 -0.8 -1z"/>
-                    </g>
-                </svg>
-            </div>
-            <div class="btn-s-blog-post btn-prev">
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px" height="20px"
-                     viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
-                    <g fill="#0d401c">
-                        <path
-                                d="M7 15.4 c-3.6 -2.4 -6.6 -5 -6.8 -5.7 -0.2 -1.2 13.8 -9.7 16 -9.7 2.4 0 0.2 2.4 -4.9 5.2 l-5.8 3.3 19.5 0.8 c11 0.5 27.1 0.5 37 -0.1 9.6 -0.5 17.7 -0.7 17.9 -0.5 2.4 1.9 -22 3.5 -48.6 3.1 l-25.2 -0.3 4.7 4.2 c6.1 5.5 4.4 5.3 -3.8 -0.3z"/>
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </section><!-- /.Section blog post -->
-
-
-    <!-- Section contact us -->
-    <section class="s-contact-us has-img-item">
-        <div class="section-wrap">
-            <div class="tf-container w-1290">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="content-left">
-                            <div class="image mb-30 mh-unset">
-                                <img src="{% static 'images/section/s-contact.jpg' %}"
-                                     alt="./images/section/s-contact.jpg"
-                                     class="lazyload"/>
-                                <img src="{% static 'images/item/leaf.png' %}" alt=""
-                                     class="img-item tf-animate__rotate-left"/>
-                            </div>
-                            <ul class="contact-list">
-                                <li class="wow fadeInUp" data-wow-duration="1.4s">
-                                    <div class="icon style-circle">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </div>
-                                    <div class="infor">
-                                        <p class="title">
-                                            Ferma Manzili
-                                        </p>
-                                        <p class="text">
-                                            Prinsengracht 250, 2501016 PM <br>
-                                            Amsterdam, Niderlandiya
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="wow fadeInUp" data-wow-duration="1.4s">
-                                    <div class="icon style-circle">
-                                        <i class="fa-solid fa-address-book"></i>
-                                    </div>
-                                    <div class="infor">
-                                        <p class="title">
-                                            Biz bilan bog'laning
-                                        </p>
-                                        <p class="text">
-                                            Donalfarms@gmail.com <br>
-                                            Bizga 24/7 qo'ng'iroq qiling: +1 987 654 3210
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="wow fadeInUp" data-wow-duration="1.4s">
-                                    <div class="icon style-circle">
-                                        <i class="fa-solid fa-clock"></i>
-                                    </div>
-                                    <div class="infor">
-                                        <p class="title">
-                                            Ish vaqti
-                                        </p>
-                                        <p class="text">
-                                            Dushanba - Juma: 8:00am - 18:00pm <br>
-                                            Shanba: 9:00am - 17:00pm <br>
-                                            Bayramlarda: Yopiq
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="content-section">
-                            <div class="heading-section mb-50 style-3 has-text">
-                                <p class="sub-title">Birgalikda Ishlashni Boshlaylik</p>
-                                <p class="title tf-animate-1 transition-1s">
-                                    Bugun Biz bilan Bog'laning!
-                                </p>
-                                <p class="text">
-                                    Sizga 24 soat ichida elektron pochta orqali javob beramiz, biz bilan bog'lang!
-                                </p>
-                                <div class="img-item">
-                                    <img class="tf-animate-1" src="{% static 'images/item/rice-plant-2.png' %}"
-                                         alt=""/>
-                                </div>
-                            </div>
-                            <form id="contactform" method="post"
-                                  action="https://themesflat.co/html/donalfarm/contact/contact-process.php"
-                                  novalidate="novalidate" class="form-send-message">
-                                <div class="cols style-2 mb-15">
-                                    <fieldset>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               placeholder="Ism*" aria-required="true" required class="name"/>
-                                    </fieldset>
-                                    <fieldset>
-                                        <input type="email" class="form-control email" id="mail" name="mail"
-                                               placeholder="Email*" required/>
-                                    </fieldset>
-                                </div>
-                                <div class="cols style-2 mb-15">
-                                    <fieldset>
-                                        <input type="text" class="form-control" id="phone" name="phone"
-                                               placeholder="Telefon raqami*" aria-required="true" required/>
-                                    </fieldset>
-                                    <fieldset class="dropdown">
-                                        <select name="text" id="Support">
-                                            <option value="Sizga yordam kerakmi?" selected="">Sizga yordam
-                                                kerakmi?
-                                            </option>
-                                            <option value="Sizga yordam kerakmi? 1">Sizga yordam kerakmi? 1</option>
-                                            <option value="Sizga yordam kerakmi? 2">Sizga yordam kerakmi? 2</option>
-                                            <option value="Sizga yordam kerakmi? 3">Sizga yordam kerakmi? 3</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-                                <div class="cols mb-30">
-                                    <fieldset>
-                                    <textarea name="message" id="message"
-                                              placeholder="Xabar..."></textarea>
-                                    </fieldset>
-                                </div>
-                                <div class="checkbox-item send-wrap">
-                                    <label class="mb-0">
-                                    <span class="text font-nunito">Bizning shartlarimiz va <br>qoidalarimizga rozi
-                                        bo'ling</span>
-                                        <input type="checkbox" class="checkbox-item" checked>
-                                        <span class="btn-checkbox"></span>
-                                    </label>
-                                    <button type="submit" class="tf-btn bg-white">
-                                    <span class="text-style cl-primary">
-                                        Xabar yuborish
-                                    </span>
-                                        <span class="icon">
-                                        <i class="icon-arrow_right"></i>
-                                    </span>
-                                    </button>
-                                </div>
-                            </form>
-                            <div class="img-item item-1 up-down-move">
-                                <img src="{% static 'images/item/corn-3.png' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="s-img-item item-1">
-            <img src="{% static 'images/item/page-title-top.png' %}" alt=""/>
-        </div>
-    </section><!-- /.Section contact us -->
-
-
-    <!-- Section partner -->
-
-    <section class="s-partner pb-100">
-        <div class="tf-container w-1780">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="slider-wrap">
-                        <div class="swiper-container slider-partner">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="slide-partner">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="{% static 'images/partner/wide-open.png' %}" alt=""
-                                                     class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="slide-partner">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="{% static 'images/partner/sollio.png' %}" alt=""
-                                                     class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="slide-partner">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="{% static 'images/partner/syngenta.png' %}" alt=""
-                                                     class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="slide-partner">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="{% static 'images/partner/strachan-valley.png' %}" alt=""
-                                                     class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="slide-partner">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="{% static 'images/partner/new-holland.png' %}" alt=""
-                                                     class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="slide-partner">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="{% static 'images/partner/stony-field.png' %}" alt=""
-                                                     class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /.Section partner -->
-
 
 </div><!-- /.Main-content -->
 {% endblock content %}
